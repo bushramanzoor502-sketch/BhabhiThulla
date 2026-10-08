@@ -86,6 +86,7 @@ export function LegalLayout({ sections, summary }: { sections: LegalSection[]; s
 
           <p className="legal__foot">
             See also: <Link to="/privacy">Privacy Policy</Link> · <Link to="/terms">Terms of Use</Link> ·{' '}
+            <Link to="/delete-account">Delete Account</Link> ·{' '}
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </p>
         </article>

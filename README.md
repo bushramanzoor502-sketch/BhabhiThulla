@@ -14,6 +14,7 @@ Live site: https://bushramanzoor502-sketch.github.io/BhabhiThulla/
 | `/faqs` | FAQs (accordion) |
 | `/contact` | Contact Us (validated form, opens the visitor's email app) |
 | `/privacy` | Privacy Policy |
+| `/delete-account` | Delete Account (how to delete your profile and data) |
 | `/terms` | Terms of Use |
 
 ## Stack
@@ -47,7 +48,7 @@ src/
     layout/             Navbar (mobile menu), Footer, PageTransition, ErrorBoundary
     page/               PageHeader for inner pages
     ui/ faq/ contact/ legal/
-  pages/                Home (+ home/ sections), About, Faqs, Contact, Privacy, Terms, NotFound
+  pages/                Home (+ home/ sections), About, Faqs, Contact, Privacy, Terms, DeleteAccount, NotFound
 public/                 favicon, OG image, robots.txt, sitemap.xml, 404.html (SPA fallback)
 ```
 

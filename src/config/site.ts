@@ -43,10 +43,12 @@ export const navLinks = [
   { to: '/faqs', label: 'FAQs', suit: 'C' },
   { to: '/contact', label: 'Contact', suit: 'D' },
   { to: '/privacy', label: 'Privacy Policy', suit: 'S' },
+  { to: '/delete-account', label: 'Delete Account', suit: 'H' },
 ] as const;
 
 export const legalLinks = [
   { to: '/privacy', label: 'Privacy Policy' },
+  { to: '/delete-account', label: 'Delete Account' },
   { to: '/terms', label: 'Terms of Use' },
 ] as const;
 

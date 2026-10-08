@@ -14,6 +14,7 @@ const Faqs = lazy(() => import('./pages/Faqs'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const DeleteAccount = lazy(() => import('./pages/DeleteAccount'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Page order for transition direction: the nav tabs left to right, then any remaining legal pages.
@@ -61,6 +62,7 @@ export default function App() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
+                  <Route path="/delete-account" element={<DeleteAccount />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>

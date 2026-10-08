@@ -42,7 +42,7 @@ export const privacy: LegalSection[] = [
           'Game files: the on-device AI model used by the computer opponents, copied into the app’s storage when the Game first runs.',
         ],
       },
-      'You can delete all of this at any time by clearing the Game’s storage in your Android settings or by uninstalling the Game.',
+      'You can delete your guest profile at any time with the Switch button on the Game’s main screen, and delete all of this data by clearing the Game’s storage in your Android settings or by uninstalling the Game. Step-by-step instructions are on the Delete Account page of this Website.',
     ],
   },
   {
@@ -68,7 +68,7 @@ export const privacy: LegalSection[] = [
       {
         list: [
           'Google Play: if you download the Game from Google Play, Google processes information about your download and device under its own terms and privacy policy. We do not receive personal information about you from Google Play.',
-          'Sign-in buttons: the Game shows “Continue with Google” and “Continue with Facebook” buttons marked “Coming soon”. They are not connected to any service and do not collect or send any data. If sign-in is introduced in the future, this policy will be updated before it becomes available.',
+          'Sign-in buttons: the Game shows “Continue with Google” and “Continue with Facebook” buttons marked “Coming soon”. They are not connected to any service and do not collect or send any data. If sign-in is introduced in the future, this policy will be updated before it becomes available, and you will be able to have your account deleted on request as described on the Delete Account page.',
         ],
       },
     ],
@@ -121,7 +121,7 @@ export const privacy: LegalSection[] = [
     id: 'your-rights',
     title: 'Your rights and choices',
     blocks: [
-      'Because your game data is stored only on your device, you are in full control of it: you can view your progress in the Game and delete it at any time by clearing the app’s storage or uninstalling. For any email correspondence we hold, you can ask us to access, correct or delete it, depending on the laws that apply where you live.',
+      'Because your game data is stored only on your device, you are in full control of it: you can view your progress in the Game and delete it at any time with the Switch button, by clearing the app’s storage or by uninstalling. See the Delete Account page for step-by-step instructions, or email us to request deletion. For any email correspondence we hold, you can ask us to access, correct or delete it, depending on the laws that apply where you live.',
     ],
   },
   {

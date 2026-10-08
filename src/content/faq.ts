@@ -107,6 +107,12 @@ export const faqGroups: FaqGroup[] = [
           'Guest progress lives only on your device, so uninstalling the game or clearing its data removes it. If Android backup is turned on for your device, the system may restore it when you reinstall.',
         ],
       },
+      {
+        q: 'How do I delete my account and data?',
+        a: [
+          'Tap Switch next to your coins on the main screen to erase your guest profile straight away. To remove everything, including sound settings and an unfinished match, clear the game’s storage in Android Settings or uninstall it. The Delete Account page has step-by-step instructions, including Android backup and Google or Facebook sign-in once it arrives, or you can email us to request deletion.',
+        ],
+      },
     ],
   },
   {
