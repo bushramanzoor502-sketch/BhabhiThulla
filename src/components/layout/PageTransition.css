@@ -15,6 +15,5 @@
 
 .pt__card {
   width: clamp(4.5rem, 8vw, 7rem);
-  transform: rotate(-8deg);
   filter: drop-shadow(0 18px 28px rgb(0 0 0 / 0.6));
 }
