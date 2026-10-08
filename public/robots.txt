@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bushramanzoor502-sketch.github.io/BhabhiThulla/sitemap.xml

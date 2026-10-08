@@ -1,0 +1,299 @@
+.sc {
+  padding-block: var(--section-y);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 45%, rgb(58 33 96 / 0.35), transparent 70%),
+    var(--room);
+}
+
+/* ---------- Fan of decks ---------- */
+
+.sc__fan {
+  --cw: clamp(6.5rem, 4rem + 7vw, 11rem);
+  position: relative;
+  height: calc(var(--cw) * 2.05);
+  margin: 0 auto clamp(4rem, 3rem + 5vw, 8rem);
+  padding: 0;
+  list-style: none;
+}
+
+.sc__slot {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: var(--cw);
+  margin-left: calc(var(--cw) / -2);
+  transform-origin: 50% 200%;
+  translate: calc(var(--d) * var(--cw) * 0.55) calc(var(--ad) * var(--ad) * 0.35rem);
+  rotate: calc(var(--d) * 6deg);
+  transition:
+    translate 0.6s var(--ease-out),
+    rotate 0.6s var(--ease-out);
+}
+
+/* Hovering the fan spreads it; the hovered card rises. */
+.sc__fan:hover .sc__slot {
+  translate: calc(var(--d) * var(--cw) * 0.82) calc(var(--ad) * var(--ad) * 0.5rem);
+  rotate: calc(var(--d) * 8deg);
+}
+
+.sc__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.45s var(--ease-out);
+  border-radius: 0.6rem;
+}
+
+.sc__slot:hover .sc__card,
+.sc__card:focus-visible {
+  transform: translateY(-1.4rem) scale(1.04);
+}
+
+.sc__inner {
+  position: relative;
+  display: block;
+  aspect-ratio: 100 / 140;
+  transform-style: preserve-3d;
+  transition: transform 0.75s var(--ease-out);
+}
+
+.sc__card.is-flipped .sc__inner {
+  transform: rotateY(180deg);
+}
+
+.sc__back,
+.sc__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.sc__face {
+  transform: rotateY(180deg);
+}
+
+.sc__name {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.8rem);
+  translate: -50% 0;
+  font-size: 0.62rem;
+  color: var(--gold);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sc__slot:hover .sc__name,
+.sc__card:focus-visible .sc__name {
+  opacity: 1;
+}
+
+/* Small screens: the fan becomes a swipeable row so each deck is reachable by touch. */
+@media (max-width: 700px) {
+  .sc__fan {
+    --cw: 8rem;
+    display: flex;
+    gap: 1rem;
+    height: auto;
+    padding: 1.5rem var(--gutter) 3rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .sc__slot,
+  .sc__fan:hover .sc__slot {
+    position: relative;
+    left: auto;
+    flex: none;
+    margin: 0;
+    translate: none;
+    rotate: none;
+    scroll-snap-align: center;
+  }
+  .sc__name {
+    opacity: 1;
+  }
+}
+
+/* ---------- Phone mockup (landscape, like the game) ---------- */
+
+.sc__phone-wrap {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.sc__phone {
+  width: min(100%, 860px);
+  aspect-ratio: 20 / 9;
+  padding: clamp(0.5rem, 1.2vw, 0.9rem);
+  border-radius: clamp(1.4rem, 3vw, 2.6rem);
+  background: linear-gradient(145deg, #2a2d31, #0c0d0f 40%, #1b1d20);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 40px 80px -30px rgb(0 0 0 / 0.9),
+    0 0 0 1px #000;
+  transform: perspective(1600px) rotateX(10deg);
+}
+
+.sc__screen {
+  --sw: min(100vw - 2 * var(--gutter), 860px);
+  --c: calc(var(--sw) * 0.06);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(1rem, 2.4vw, 2rem);
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+.sc__hud {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.4cqi 4cqi;
+  font-size: clamp(0.36rem, 1.5cqi, 0.9rem);
+  color: var(--ivory-dim);
+}
+
+.sc__hud-r {
+  color: var(--gold);
+}
+
+.sc__oval {
+  position: absolute;
+  inset: 13% 12% 16%;
+  border-radius: 50%;
+  border: 1px solid rgb(201 165 78 / 0.35);
+}
+
+.sc__seat {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1cqi;
+  font-size: clamp(0.36rem, 1.5cqi, 0.9rem);
+  font-weight: 600;
+}
+
+.sc__av {
+  display: grid;
+  place-items: center;
+  width: 4cqi;
+  height: 4cqi;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.8cqi;
+}
+
+.sc__seat--n {
+  top: 8%;
+  left: 50%;
+  translate: -50% 0;
+}
+.sc__seat--w {
+  left: 3%;
+  top: 44%;
+}
+.sc__seat--e {
+  right: 3%;
+  top: 44%;
+}
+
+.sc__power {
+  padding: 0.3cqi 0.9cqi;
+  border-radius: 99px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: clamp(0.32rem, 1.1cqi, 0.75rem);
+}
+
+.sc__trick {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 0;
+  height: 0;
+}
+
+.sc__trick .card {
+  position: absolute;
+  width: 7.5cqi;
+  translate: -50% -50%;
+}
+
+.sc__t1 {
+  rotate: -14deg;
+  margin-left: -5cqi;
+}
+.sc__t2 {
+  rotate: 4deg;
+  margin-top: -3cqi;
+}
+.sc__t3 {
+  rotate: 16deg;
+  margin-left: 5cqi;
+}
+
+.sc__turn {
+  position: absolute;
+  left: 50%;
+  bottom: 31%;
+  translate: -50% 0;
+  padding: 0.5cqi 1.4cqi;
+  border-radius: 99px;
+  border: 1px solid var(--gold);
+  background: rgb(7 17 14 / 0.75);
+  color: var(--gold-bright);
+  font-size: clamp(0.34rem, 1.2cqi, 0.8rem);
+}
+
+.sc__hand {
+  position: absolute;
+  left: 50%;
+  bottom: -9%;
+  width: 0;
+  height: 0;
+}
+
+.sc__h {
+  position: absolute;
+  bottom: 0;
+  width: 9cqi;
+  translate: calc(-50% + var(--i) * 6.2cqi) 0;
+  rotate: calc(var(--i) * 4deg);
+  transform-origin: 50% 160%;
+}
+
+.sc__h.is-dim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgb(0 0 0 / 0.42);
+}
+
+.sc__h:not(.is-dim) {
+  bottom: 2cqi;
+  box-shadow:
+    0 0 0 1.5px var(--gold-bright),
+    0 0 18px rgb(230 198 110 / 0.5);
+}
+
+.sc__caption {
+  max-width: 44rem;
+  text-align: center;
+  font-size: var(--fs-small);
+  color: var(--ivory-mute);
+}

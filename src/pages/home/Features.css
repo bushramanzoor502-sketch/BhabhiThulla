@@ -1,0 +1,116 @@
+.feat {
+  position: relative;
+  padding-block: var(--section-y);
+  overflow: hidden;
+}
+
+/* Section sits on its own felt so the table surface "continues" under the feature cards. */
+.feat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 60%, rgb(42 106 82 / 0.5), transparent 70%),
+    linear-gradient(180deg, var(--room), var(--felt-deep) 30%, var(--felt-deep) 70%, var(--room));
+}
+
+.feat__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feat__cell,
+.feat__tilt {
+  height: 100%;
+}
+
+.feat__tilt .tilt__inner {
+  border-radius: 0.75rem;
+}
+
+.feat__card {
+  position: relative;
+  height: 100%;
+  min-height: 17rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.6rem;
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(160deg, rgb(244 239 227 / 0.06), transparent 40%),
+    linear-gradient(180deg, #10302a, #0b221c);
+  border: 1px solid rgb(201 165 78 / 0.28);
+  box-shadow:
+    inset 0 0 0 4px rgb(11 42 34 / 0.9),
+    inset 0 0 0 5px rgb(201 165 78 / 0.18),
+    var(--shadow-card);
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+
+.feat__tilt:hover .feat__card {
+  border-color: rgb(230 198 110 / 0.6);
+}
+
+.feat__corner {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.1rem;
+  font-size: 1.1rem;
+  color: rgb(244 239 227 / 0.35);
+}
+
+.feat__corner.red {
+  color: rgb(180 38 42 / 0.75);
+}
+
+.feat__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  color: var(--gold-bright);
+  background: radial-gradient(circle at 35% 30%, rgb(230 198 110 / 0.22), rgb(230 198 110 / 0.04));
+  border: 1px solid rgb(201 165 78 / 0.4);
+  transform: translateZ(30px);
+}
+
+.feat__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.feat__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+  transform: translateZ(20px);
+}
+
+.feat__body {
+  color: var(--ivory-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .feat__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .feat__grid {
+    grid-template-columns: 1fr;
+  }
+  .feat__card {
+    min-height: 0;
+  }
+}

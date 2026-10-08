@@ -1,0 +1,191 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
+  background: var(--room);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--ivory);
+  background: var(--room);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Utilities ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.label {
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.red {
+  color: var(--card-red);
+}
+
+/* Felt surface: layered radial light over a static SVG noise for the nap of the cloth. */
+.felt {
+  --felt-c1: var(--felt-glow);
+  --felt-c2: var(--felt);
+  --felt-c3: var(--felt-deep);
+  --felt-room: var(--room);
+  background-color: var(--felt-c3);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 70% 60% at 50% 42%, var(--felt-c1) 0%, var(--felt-c2) 42%, var(--felt-c3) 78%, var(--felt-room) 100%);
+}
+
+.felt--walnut {
+  --felt-c1: #8e2f3a;
+  --felt-c2: var(--burgundy);
+  --felt-c3: var(--burgundy-deep);
+  --felt-room: #0e0806;
+}
+
+.felt--graphite {
+  --felt-c1: #3a4048;
+  --felt-c2: var(--graphite);
+  --felt-c3: var(--graphite-deep);
+  --felt-room: #060708;
+}
+
+.felt--royal {
+  --felt-c1: #5a3690;
+  --felt-c2: var(--royal);
+  --felt-c3: var(--royal-deep);
+  --felt-room: #0a0612;
+}
+
+/* A physical card: aspect 100:140, stacked shadows, preserved for 3D transforms. */
+.card {
+  position: relative;
+  aspect-ratio: 100 / 140;
+  border-radius: 9% / 6.4%;
+  box-shadow: var(--shadow-card);
+}
+
+.card > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.7rem 1rem;
+  background: var(--ivory);
+  color: var(--ink);
+  font-weight: 600;
+  border-radius: var(--radius-ui);
+  transform: translateY(-160%);
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+main {
+  display: block;
+  min-height: 70vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

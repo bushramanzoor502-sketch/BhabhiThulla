@@ -1,0 +1,202 @@
+.tbl {
+  padding-block: var(--section-y);
+  background: linear-gradient(180deg, var(--room), #0c0f10 60%, var(--room));
+}
+
+.tbl__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.tbl__controls {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.tbl__arrow {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgb(201 165 78 / 0.5);
+  background: transparent;
+  color: var(--gold-bright);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    background-color var(--dur),
+    color var(--dur);
+}
+
+.tbl__arrow:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.tbl__track {
+  --edge: max(var(--gutter), calc((100vw - var(--max-w)) / 2 + var(--gutter)));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(17rem, 21rem);
+  gap: 1.25rem;
+  margin: 0;
+  padding: 1rem var(--edge) 2rem;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim) transparent;
+  overscroll-behavior-x: contain;
+}
+
+.tbl__track:focus-visible {
+  outline-offset: -4px;
+}
+
+.tbl__item {
+  scroll-snap-align: start;
+}
+
+.tbl__card {
+  --accent: var(--gold);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: #0f1513;
+  border: 1px solid rgb(244 239 227 / 0.1);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur);
+}
+
+.tbl__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.tbl__card--walnut {
+  --accent: #e0b65a;
+}
+.tbl__card--graphite {
+  --accent: var(--cyan);
+}
+.tbl__card--royal {
+  --accent: var(--gold-bright);
+}
+
+.tbl__felt {
+  position: relative;
+  height: 11rem;
+  display: grid;
+  place-items: center;
+  border-bottom: 4px solid #3b2416;
+}
+
+.tbl__card--royal .tbl__felt {
+  border-bottom-color: #a8842f;
+}
+
+.tbl__card--graphite .tbl__felt {
+  border-bottom-color: #24272c;
+}
+
+.tbl__deck {
+  position: absolute;
+  width: 4.6rem;
+  rotate: -8deg;
+  translate: -18% 0;
+  transition:
+    rotate 0.5s var(--ease-out),
+    translate 0.5s var(--ease-out);
+}
+
+.tbl__deck--2 {
+  rotate: 7deg;
+  translate: 18% 4%;
+}
+
+.tbl__card:hover .tbl__deck {
+  rotate: -16deg;
+  translate: -38% -2%;
+}
+
+.tbl__card:hover .tbl__deck--2 {
+  rotate: 14deg;
+  translate: 36% 2%;
+}
+
+.tbl__info {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.4rem 1.4rem 1.5rem;
+}
+
+.tbl__players {
+  color: var(--accent);
+  font-size: 0.68rem;
+}
+
+.tbl__name {
+  font-size: 1.8rem;
+}
+
+.tbl__deckname {
+  color: var(--ivory-mute);
+  font-size: var(--fs-small);
+}
+
+.tbl__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0 0.75rem;
+  padding: 0.9rem 0;
+  border-block: 1px solid rgb(244 239 227 / 0.08);
+}
+
+.tbl__stats dt {
+  font-size: 0.64rem;
+  color: var(--ivory-mute);
+  margin-bottom: 0.25rem;
+}
+
+.tbl__stats dd {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tbl__coin {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.tbl__lock {
+  font-size: var(--fs-small);
+  color: var(--ivory-dim);
+}
+
+.tbl__note {
+  font-size: var(--fs-small);
+  color: var(--ivory-mute);
+}
+
+@media (max-width: 640px) {
+  .tbl__controls {
+    display: none;
+  }
+  .tbl__track {
+    grid-auto-columns: 78vw;
+  }
+}

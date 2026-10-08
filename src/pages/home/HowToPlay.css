@@ -1,0 +1,219 @@
+.htp {
+  position: relative;
+  padding-block: var(--section-y);
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgb(201 165 78 / 0.07), transparent 70%),
+    linear-gradient(180deg, var(--room), #0a1713 50%, var(--room));
+  outline: none;
+}
+
+.htp__steps {
+  display: grid;
+  gap: clamp(3.5rem, 2rem + 6vw, 7rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.htp__step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.htp__step.is-flip .htp__text {
+  order: 2;
+}
+
+.htp__text {
+  position: relative;
+  max-width: 30rem;
+  justify-self: end;
+}
+
+.htp__step.is-flip .htp__text {
+  justify-self: start;
+}
+
+.htp__marker {
+  width: 3.4rem;
+  margin-bottom: 1.5rem;
+  rotate: -6deg;
+}
+
+.htp__num {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.htp__title {
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+.htp__body {
+  color: var(--ivory-dim);
+  font-size: 1.05rem;
+}
+
+/* The little table each step is acted out on */
+.htp__visual {
+  --vc: clamp(3.4rem, 2.5rem + 3vw, 5rem);
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  aspect-ratio: 5 / 4;
+  border-radius: 46% / 50%;
+  box-shadow:
+    0 0 0 10px #3b2416,
+    0 0 0 11px #5a3a24,
+    0 30px 60px -20px rgb(0 0 0 / 0.8),
+    inset 0 10px 30px rgb(0 0 0 / 0.5);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.htp__tc,
+.htp__deck {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--vc);
+  margin-left: calc(var(--vc) / -2);
+  margin-top: calc(var(--vc) * -0.7);
+}
+
+.htp__tc--back {
+  width: calc(var(--vc) * 0.78);
+  margin-left: calc(var(--vc) * -0.39);
+  margin-top: calc(var(--vc) * -0.546);
+}
+
+.htp__deck {
+  width: calc(var(--vc) * 0.78);
+  margin-left: calc(var(--vc) * -0.39);
+  margin-top: calc(var(--vc) * -0.546);
+  box-shadow:
+    1px 1px 0 #d9d0bc,
+    2px 2px 0 #c9bfa8,
+    3px 3px 0 #b8ad94,
+    var(--shadow-card);
+}
+
+.htp__tc.is-glow {
+  z-index: 2;
+  box-shadow:
+    0 0 0 2px var(--gold-bright),
+    0 0 24px 4px rgb(230 198 110 / 0.55),
+    var(--shadow-card);
+}
+
+.htp__slam {
+  z-index: 3;
+}
+
+.htp__badge {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 4;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.htp__badge--gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.htp__badge--red {
+  background: var(--card-red);
+  color: var(--ivory);
+}
+
+.htp__stamp {
+  position: absolute;
+  z-index: 5;
+  top: 40%;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  text-shadow:
+    0 2px 0 #6e5a24,
+    0 4px 0 #3b2416,
+    0 10px 24px rgb(0 0 0 / 0.8);
+}
+
+.htp__visual--thulla .htp__visual-bg {
+  display: none;
+}
+
+.htp__result {
+  display: grid;
+  gap: 0.55rem;
+  width: min(80%, 20rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.htp__row {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.4rem;
+  background: rgb(7 17 14 / 0.7);
+  border: 1px solid rgb(201 165 78 / 0.3);
+}
+
+.htp__row--red {
+  border-color: rgb(180 38 42 / 0.8);
+  background: rgb(94 28 37 / 0.6);
+}
+
+.htp__place {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.htp__name {
+  font-weight: 600;
+}
+
+.htp__tag {
+  font-size: 0.64rem;
+  color: var(--gold-bright);
+}
+
+.htp__row--red .htp__tag {
+  color: #ffb3b0;
+}
+
+@media (max-width: 860px) {
+  .htp__step {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .htp__step.is-flip .htp__text {
+    order: 0;
+  }
+  .htp__text,
+  .htp__step.is-flip .htp__text {
+    justify-self: start;
+  }
+  .htp__visual {
+    justify-self: center;
+  }
+}

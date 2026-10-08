@@ -1,0 +1,77 @@
+.nf {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: calc(var(--nav-h) + 3rem) 0 4rem;
+  text-align: center;
+}
+
+.nf__inner {
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+}
+
+.nf__cards {
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  margin-bottom: 1.5rem;
+  perspective: 1000px;
+}
+
+.nf__card {
+  width: clamp(5rem, 3.5rem + 6vw, 8.5rem);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 0.6rem;
+}
+
+.nf__flip {
+  position: relative;
+  display: block;
+  aspect-ratio: 100 / 140;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.nf__card:hover .nf__flip {
+  transform: translateY(-6px);
+}
+
+.nf__card.is-flipped .nf__flip {
+  transform: rotateY(180deg);
+}
+
+.nf__back,
+.nf__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.nf__face {
+  transform: rotateY(180deg);
+}
+
+.nf__title {
+  font-size: var(--fs-h1);
+  max-width: 18ch;
+}
+
+.nf__lead {
+  max-width: 34rem;
+  color: var(--ivory-dim);
+  font-size: var(--fs-lead);
+}
+
+.nf__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}

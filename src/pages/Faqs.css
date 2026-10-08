@@ -1,0 +1,130 @@
+.faqs {
+  padding-block: clamp(4rem, 3rem + 4vw, 7rem) var(--section-y);
+  background:
+    radial-gradient(ellipse 40% 30% at 15% 10%, rgb(42 106 82 / 0.25), transparent 70%),
+    var(--room);
+}
+
+.faqs__grid {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.faqs__toc {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+}
+
+.faqs__toc ul {
+  display: grid;
+  gap: 0.25rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faqs__toc a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.75rem;
+  border-left: 2px solid rgb(201 165 78 / 0.2);
+  color: var(--ivory-dim);
+  text-decoration: none;
+  transition:
+    color var(--dur-fast),
+    border-color var(--dur-fast),
+    background-color var(--dur-fast);
+}
+
+.faqs__toc a:hover {
+  color: var(--ivory);
+  border-color: var(--gold);
+  background: rgb(201 165 78 / 0.06);
+}
+
+.faqs__toc-pip,
+.faqs__group-pip {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex: none;
+  color: var(--ivory);
+}
+
+.faqs__toc-pip.red,
+.faqs__group-pip.red {
+  color: var(--card-red);
+}
+
+.faqs__groups {
+  display: grid;
+  gap: clamp(3rem, 2rem + 3vw, 4.5rem);
+  max-width: 52rem;
+}
+
+.faqs__group {
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+.faqs__group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+}
+
+.faqs__group-pip {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.faqs__more {
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  padding: 2.5rem;
+  border-radius: 0.9rem;
+  border: 1px dashed rgb(201 165 78 / 0.45);
+  background: rgb(201 165 78 / 0.04);
+}
+
+.faqs__more-title {
+  font-size: 1.6rem;
+}
+
+.faqs__more p {
+  color: var(--ivory-dim);
+}
+
+.faqs__more a:not(.btn) {
+  color: var(--gold-bright);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .faqs__grid {
+    grid-template-columns: 1fr;
+  }
+  .faqs__toc {
+    position: static;
+  }
+  .faqs__toc ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .faqs__toc a {
+    border: 1px solid rgb(201 165 78 / 0.3);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .faqs__more {
+    padding: 1.6rem;
+  }
+}

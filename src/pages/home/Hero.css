@@ -1,0 +1,456 @@
+.hero {
+  --px: 0;
+  --py: 0;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Overhead lamp: warm pool of light on the table, dark room around it. */
+.hero__light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 45% 38% at 66% 46%, rgb(255 236 190 / 0.12), transparent 70%),
+    radial-gradient(ellipse 120% 90% at 66% 50%, transparent 40%, rgb(3 8 6 / 0.85) 100%),
+    linear-gradient(90deg, rgb(4 10 8 / 0.9) 0%, rgb(4 10 8 / 0.55) 32%, transparent 58%);
+}
+
+/* ---------- Stage & table ---------- */
+
+.hero__stage {
+  position: absolute;
+  z-index: 0;
+  top: var(--nav-h);
+  bottom: 0;
+  left: 40%;
+  right: -7%;
+}
+
+.hero__parallax {
+  --tw: min(56vw, 900px, 112vh);
+  --cw: calc(var(--tw) * 0.078);
+  position: absolute;
+  inset: 0;
+  perspective: 1500px;
+  perspective-origin: 50% 20%;
+  translate: calc(var(--px) * -22px) calc(var(--py) * -14px);
+  transition: translate 0.6s var(--ease-out);
+}
+
+.hero__table {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--tw);
+  height: calc(var(--tw) * 0.6);
+  margin-left: calc(var(--tw) / -2);
+  margin-top: calc(var(--tw) * -0.34);
+  transform-style: preserve-3d;
+  transform-origin: 50% 60%;
+}
+
+.hero__rail,
+.hero__bed,
+.hero__inlay {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Wooden rail, the same walnut tones as TablePalette (EMERALD). */
+.hero__rail {
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #8a5a33, #5a3a24 55%, #2e1b10);
+  box-shadow:
+    0 60px 80px -20px rgb(0 0 0 / 0.85),
+    inset 0 2px 0 rgb(255 220 170 / 0.25),
+    inset 0 -6px 14px rgb(0 0 0 / 0.5);
+}
+
+.hero__bed {
+  inset: 4.2%;
+  box-shadow:
+    inset 0 0 0 3px #0e3328,
+    inset 0 12px 40px rgb(0 0 0 / 0.55);
+}
+
+.hero__inlay {
+  inset: 11%;
+  border: 1.5px solid rgb(201 165 78 / 0.38);
+}
+
+.hero__inlay::after {
+  content: '';
+  position: absolute;
+  inset: 3%;
+  border-radius: 50%;
+  border: 1px solid rgb(201 165 78 / 0.16);
+}
+
+/* Bot fans */
+.hero__fan {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.hero__fan--left {
+  left: 13%;
+  top: 50%;
+}
+.hero__fan--top {
+  left: 50%;
+  top: 15%;
+}
+.hero__fan--right {
+  left: 87%;
+  top: 50%;
+}
+
+.hero__fan-card {
+  position: absolute;
+  width: var(--cw);
+  border-radius: 9% / 6.4%;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.45);
+}
+
+.hero__fan--left .hero__fan-card {
+  translate: -50% calc(-50% + var(--i) * var(--cw) * 0.32);
+  rotate: calc(90deg + var(--i) * 5deg);
+}
+.hero__fan--top .hero__fan-card {
+  translate: calc(-50% + var(--i) * var(--cw) * 0.32) -50%;
+  rotate: calc(180deg - var(--i) * 5deg);
+}
+.hero__fan--right .hero__fan-card {
+  translate: -50% calc(-50% - var(--i) * var(--cw) * 0.32);
+  rotate: calc(-90deg + var(--i) * 5deg);
+}
+
+/* Player hand at the near edge */
+.hero__hand {
+  position: absolute;
+  left: 50%;
+  top: 82%;
+  width: 0;
+  height: 0;
+}
+
+.hero__hand-card {
+  position: absolute;
+  width: calc(var(--cw) * 1.3);
+  translate: calc(-50% + var(--i) * var(--cw) * 0.62) calc(-50% + var(--a) * var(--a) * var(--cw) * 0.05);
+  rotate: calc(var(--i) * 7deg);
+  transform-origin: 50% 120%;
+}
+
+/* The Ace of Spades */
+.hero__ace {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: calc(var(--cw) * 1.45);
+  margin-left: calc(var(--cw) * -0.725);
+  margin-top: calc(var(--cw) * -1.015);
+  aspect-ratio: 100 / 140;
+  transform-style: preserve-3d;
+}
+
+.hero__flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.hero__face,
+.hero__back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.hero__back {
+  transform: rotateY(180deg);
+}
+
+.hero__ring {
+  position: absolute;
+  inset: -55% -80%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(230 198 110 / 0.35), rgb(230 198 110 / 0.08) 60%, transparent);
+  pointer-events: none;
+}
+
+/* Seat labels (flat overlay, positioned to sit beside each seat) */
+.hero__seat {
+  position: absolute;
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.35rem 0.7rem;
+  border-left: 2px solid var(--gold);
+  background: rgb(7 17 14 / 0.72);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.hero__seat-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.hero__seat-trait {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero__seat--left {
+  left: calc(50% - var(--tw) * 0.5);
+  top: calc(50% + var(--tw) * 0.02);
+}
+.hero__seat--top {
+  left: calc(50% + var(--tw) * 0.1);
+  top: calc(50% - var(--tw) * 0.25);
+}
+.hero__seat--right {
+  right: calc(50% - var(--tw) * 0.43);
+  top: calc(50% + var(--tw) * 0.06);
+}
+
+.hero__hint {
+  position: absolute;
+  left: calc(50% + var(--tw) * 0.1);
+  top: calc(50% - var(--tw) * 0.1);
+  translate: 0 -50%;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgb(201 165 78 / 0.55);
+  border-radius: 999px;
+  background: rgb(7 17 14 / 0.8);
+  color: var(--gold-bright);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+/* ---------- Copy ---------- */
+
+.hero__copy {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-h) + 2rem);
+  padding-bottom: 5rem;
+  pointer-events: none;
+}
+
+.hero__copy > * {
+  pointer-events: auto;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  align-items: center;
+  color: var(--ivory-dim);
+}
+
+.hero__dot {
+  color: var(--gold);
+}
+
+.hero__title {
+  display: grid;
+  margin: 1.25rem 0 1.5rem;
+  font-size: var(--fs-hero);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero__title-top {
+  color: var(--ivory);
+  text-shadow: 0 6px 30px rgb(0 0 0 / 0.5);
+}
+
+.hero__title-bottom .split__char {
+  background: linear-gradient(180deg, #f3dc97 0%, var(--gold-bright) 35%, var(--gold) 70%, #9c7a30 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__tagline {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 0.9rem + 1vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--ivory);
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  translate: -50% 0;
+  color: var(--ivory-mute);
+}
+
+.hero__scroll .label {
+  font-size: 0.62rem;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(var(--gold), transparent);
+  transform-origin: top;
+  animation: hero-scroll 2.2s var(--ease-in-out) infinite;
+}
+
+@keyframes hero-scroll {
+  0% {
+    transform: scaleY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+/* ---------- Responsive compositions ---------- */
+
+/* Tablets & small laptops: table moves up behind the copy, copy anchors to the bottom. */
+@media (max-width: 1023px) {
+  .hero {
+    align-items: end;
+  }
+  .hero__stage {
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: 58svh;
+    height: 58vh;
+  }
+  .hero__parallax {
+    --tw: min(108vw, 760px);
+    --cw: calc(var(--tw) * 0.085);
+  }
+  .hero__light {
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 30%, rgb(255 236 190 / 0.1), transparent 70%),
+      linear-gradient(180deg, rgb(4 10 8 / 0.6) 0%, transparent 18%, transparent 42%, rgb(4 10 8 / 0.92) 68%, rgb(4 10 8 / 0.98) 100%);
+  }
+  .hero__copy {
+    padding-top: 50vh;
+    padding-top: 50svh;
+    padding-bottom: 4.5rem;
+  }
+  .hero__seat {
+    display: none;
+  }
+  .hero__scroll {
+    display: none;
+  }
+  .hero__hint {
+    left: 50%;
+    top: calc(50% - var(--tw) * 0.36);
+    translate: -50% -50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__parallax {
+    --tw: 128vw;
+    --cw: calc(var(--tw) * 0.088);
+  }
+  .hero__hint {
+    font-size: 0.6rem;
+  }
+  .hero__ctas {
+    gap: 0.75rem;
+  }
+  .hero__ctas .btn,
+  .hero__ctas .play-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+
+/* Phones and short laptops in landscape: side-by-side again, tighter type. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .hero {
+    align-items: center;
+  }
+  .hero__stage {
+    top: var(--nav-h);
+    bottom: 0;
+    left: 42%;
+    right: -6%;
+    height: auto;
+  }
+  .hero__parallax {
+    --tw: min(62vw, 150vh);
+    --cw: calc(var(--tw) * 0.08);
+  }
+  .hero__copy {
+    padding-top: calc(var(--nav-h) + 1rem);
+    padding-bottom: 2rem;
+  }
+  .hero__copy > * {
+    max-width: 46%;
+  }
+  .hero__title {
+    font-size: clamp(2.4rem, 9vh + 1rem, 4.5rem);
+    margin: 0.6rem 0 0.8rem;
+  }
+  .hero__ctas {
+    margin-top: 1.25rem;
+  }
+  .hero__ctas .btn,
+  .hero__ctas .play-btn {
+    flex: 0 0 auto;
+  }
+  .hero__light {
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgb(255 236 190 / 0.1), transparent 70%),
+      linear-gradient(90deg, rgb(4 10 8 / 0.92) 0%, rgb(4 10 8 / 0.6) 40%, transparent 62%);
+  }
+  .hero__seat,
+  .hero__scroll {
+    display: none;
+  }
+  .hero__hint {
+    left: 50%;
+    top: calc(50% - var(--tw) * 0.36);
+    translate: -50% -50%;
+  }
+}

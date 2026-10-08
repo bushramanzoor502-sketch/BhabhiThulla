@@ -1,0 +1,39 @@
+.tilt {
+  perspective: 900px;
+}
+
+.tilt__inner {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 0%;
+  position: relative;
+  height: 100%;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.tilt__inner:hover {
+  transition-duration: 0.12s;
+}
+
+.tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--gx) var(--gy), rgb(255 240 200 / 0.16), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.tilt__inner:hover .tilt__glare {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .tilt__glare {
+    display: none;
+  }
+}

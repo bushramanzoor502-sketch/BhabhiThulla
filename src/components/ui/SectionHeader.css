@@ -1,0 +1,68 @@
+.sh {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.sh--center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.sh__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--gold);
+}
+
+.sh__pip {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--ivory);
+}
+
+.sh__pip.red {
+  color: var(--card-red);
+}
+
+.sh__title {
+  font-size: var(--fs-h2);
+}
+
+.sh__title em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.sh__lead {
+  font-size: var(--fs-lead);
+  color: var(--ivory-dim);
+  max-width: 40rem;
+}
+
+/* SplitText */
+.split {
+  display: inline;
+}
+
+.split__word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.split__clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.split__char {
+  display: inline-block;
+  transform-origin: 0 100%;
+  will-change: transform;
+}

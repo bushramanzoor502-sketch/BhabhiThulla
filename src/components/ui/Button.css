@@ -1,0 +1,140 @@
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ivory);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-ui);
+  font-family: var(--font-label);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+.btn--gold {
+  --btn-fg: #1a1406;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold) 55%, #b18d3a);
+  border-color: #e9d08a;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 8px 24px -8px rgb(201 165 78 / 0.55);
+}
+
+/* A light sweep crosses the button on hover, like the in-game shimmer on playable cards. */
+.btn--gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.55) 48%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-out);
+}
+
+.btn--gold:hover::after,
+.btn--gold:focus-visible::after {
+  transform: translateX(120%);
+}
+
+.btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    0 14px 30px -10px rgb(201 165 78 / 0.7);
+}
+
+.btn--ghost {
+  border-color: rgb(244 239 227 / 0.35);
+  background: rgb(7 17 14 / 0.35);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn__icon {
+  display: inline-flex;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.btn:hover .btn__icon {
+  transform: translateX(3px);
+}
+
+/* Google Play badge-style button */
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 3.5rem;
+  padding: 0.55rem 1.4rem 0.55rem 1.1rem;
+  border-radius: 0.55rem;
+  background: #0b0c0d;
+  border: 1px solid rgb(244 239 227 / 0.35);
+  color: var(--ivory);
+  text-decoration: none;
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.play-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  box-shadow: 0 14px 30px -14px rgb(0 0 0 / 0.8);
+}
+
+.play-btn svg {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: none;
+}
+
+.play-btn__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.play-btn__small {
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+}
+
+.play-btn__big {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
