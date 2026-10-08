@@ -28,7 +28,8 @@ const metaTag = (key: 'name' | 'property', name: string) => () => {
 export function useDocumentMeta({ title, description, path, noindex }: Meta) {
   useEffect(() => {
     const fullTitle = path === '/' ? title : `${title} · ${site.name}`;
-    const url = `${site.url}${path === '/' ? '/' : path}`;
+    // Trailing slash matches how GitHub Pages serves each route's folder (dist/<route>/index.html).
+    const url = `${site.url}${path === '/' ? '/' : `${path}/`}`;
     document.title = fullTitle;
     setMeta('meta[name="description"]', 'content', description, metaTag('name', 'description'));
     setMeta('meta[property="og:title"]', 'content', fullTitle, metaTag('property', 'og:title'));
