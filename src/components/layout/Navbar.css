@@ -185,7 +185,7 @@
   transform: translateY(-0.38rem) rotate(-45deg);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1060px) {
   .nav__links,
   .nav__cta {
     display: none;
@@ -287,7 +287,7 @@
   word-break: break-all;
 }
 
-@media (min-width: 861px) {
+@media (min-width: 1061px) {
   .mmenu {
     display: none;
   }
@@ -308,4 +308,19 @@
   backdrop-filter: none;
   box-shadow: none;
   border-bottom-color: transparent;
+}
+
+/* Narrow phones: keep long labels ("Privacy Policy") on one line; the gold outline marks the current page. */
+.mmenu__text {
+  white-space: nowrap;
+}
+
+.mmenu__here {
+  white-space: nowrap;
+}
+
+@media (max-width: 440px) {
+  .mmenu__here {
+    display: none;
+  }
 }

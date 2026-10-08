@@ -42,6 +42,7 @@ export const navLinks = [
   { to: '/about', label: 'About', suit: 'H' },
   { to: '/faqs', label: 'FAQs', suit: 'C' },
   { to: '/contact', label: 'Contact', suit: 'D' },
+  { to: '/privacy', label: 'Privacy Policy', suit: 'S' },
 ] as const;
 
 export const legalLinks = [

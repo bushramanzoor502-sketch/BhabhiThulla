@@ -149,7 +149,9 @@ export function Navbar() {
               exit={{ opacity: 0, transition: { duration: 0.15 } }}
             >
               <ul className="mmenu__legal">
-                {legalLinks.map((l) => (
+                {legalLinks
+                  .filter((l) => !navLinks.some((n) => n.to === l.to))
+                  .map((l) => (
                   <li key={l.to}>
                     <Link to={l.to}>{l.label}</Link>
                   </li>

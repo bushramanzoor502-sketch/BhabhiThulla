@@ -26,7 +26,9 @@ export function Footer() {
         <nav className="footer__col" aria-label="Footer">
           <h2 className="footer__heading label">Explore</h2>
           <ul>
-            {navLinks.map((l) => (
+            {navLinks
+              .filter((l) => !legalLinks.some((g) => g.to === l.to))
+              .map((l) => (
               <li key={l.to}>
                 <Link to={l.to}>
                   <SuitMark suit={l.suit} className={`footer__pip ${l.suit === 'H' || l.suit === 'D' ? 'red' : ''}`} />
