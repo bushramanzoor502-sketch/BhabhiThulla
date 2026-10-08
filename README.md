@@ -53,9 +53,8 @@ public/                 favicon, OG image, robots.txt, sitemap.xml, 404.html (SP
 
 ## Deployment
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to the
-`gh-pages` branch. GitHub Pages must be set to **Deploy from a branch → `gh-pages` / root**
-(Settings → Pages).
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and deploys `dist/` with the official
+GitHub Pages actions. Settings → Pages → **Source** must be **GitHub Actions**.
 
 GitHub Pages has no SPA rewrites, so `public/404.html` encodes the requested path into the query string and
 `index.html` restores it before the app boots (the [spa-github-pages](https://github.com/rafgraph/spa-github-pages) technique).
